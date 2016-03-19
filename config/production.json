@@ -2,8 +2,8 @@
   "env": "production",
   "host": "localhost",
   "port": 3412,
-  "nedb": "NEDB_BASE_PATH",
-  "public": "../public/",
+  "nedb": "/opt/boo.production/shared/data/",
+  "public": "public/",
   "auth": {
     "token": {
       "secret": "FEATHERS_AUTH_SECRET"

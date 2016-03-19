@@ -2,8 +2,8 @@
   "env": "local",
   "host": "localhost",
   "port": 3412,
-  "nedb": "../data/",
-  "public": "../public/",
+  "nedb": "data/",
+  "public": "public/",
   "auth": {
     "token": {
       "secret": "0gPq2QgTvZmfiphc1q6kH4oyErlunJbdcM74mbEkbg6FMRGxfqS0sYsBFzFMUn4CE6wJ8n0VvgIRYjs+FZM0hQ=="

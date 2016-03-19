@@ -1,0 +1,54 @@
+{
+  /**
+   * Application configuration section
+   * http://pm2.keymetrics.io/docs/usage/application-declaration/
+   */
+  apps : [
+
+    // First application
+    {
+      name      : "boo",
+      script    : "src/index.js",
+      "args": [],
+      "no-daemon": true,
+
+      env: {
+        NODE_ENV: "local"
+      },
+      env_production : {
+        NODE_ENV: "production"
+      },
+
+      "watch": true,
+      "ignore_watch": [
+        "[\\/\\\\]\\./",
+        ".git",
+        "node_modules",
+        "public",
+        "data"
+      ],
+
+      "min_uptime": 10000,
+      "max_restarts": 2
+    }
+  ],
+
+  /**
+   * Deployment section
+   * http://pm2.keymetrics.io/docs/usage/deployment/
+   */
+  deploy : {
+    "production" : {
+      "user" : "root",
+      "host" : "128.199.111.101",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:rapee/boo.git",
+      "path" : "/opt/boo.production",
+      "post-deploy" : "npm install --production && pm2 startOrRestart ecosystem.json --env production",
+      "pre-deploy-local" : "echo '[production] deploy completed.'",
+      "env"  : {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
