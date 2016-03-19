@@ -1,5 +1,6 @@
 'use strict';
 
+const checkCache = require('./checkCache');
 const capture = require('./capture');
 
 const globalHooks = require('../../../hooks');
@@ -20,7 +21,9 @@ exports.before = {
 
 exports.after = {
   all: [],
-  find: [],
+  find: [
+    checkCache()
+  ],
   get: [],
   create: [],
   update: [],

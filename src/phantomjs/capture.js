@@ -4,12 +4,18 @@ var fs = require('fs');
 var page = new WebPage();
 var url = system.args[1];
 var output = system.args[2];
+var response;
+
+page.onResourceReceived = function(_response) {
+  response = _response;
+};
 
 page.open(url, function (status) {
   var result;
   var rendered;
   if (status !== 'success') {
-    console.log('FAILED to load the url');
+    // to stderr
+    console.error('Failed to load the url');
     phantom.exit();
   } else {
     result = page.evaluate(function () {
@@ -25,7 +31,11 @@ page.open(url, function (status) {
       rendered.flush();
       rendered.close();
     } else {
-      console.log(result);
+      // to stdout
+      console.log(JSON.stringify({
+        response: response,
+        html: result
+      }));
     }
   }
   phantom.exit();
