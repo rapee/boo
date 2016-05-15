@@ -40,7 +40,7 @@
   deploy : {
     "production" : {
       "user" : "root",
-      "host" : "128.199.111.101",
+      "host" : "128.199.207.8",
       "ref"  : "origin/master",
       "repo" : "git@github.com:rapee/boo.git",
       "path" : "/opt/boo.production",
